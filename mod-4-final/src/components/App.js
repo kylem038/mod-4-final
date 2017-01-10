@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Form from './Form';
+import List from './List';
 import '../style/App.css';
 
 class App extends Component {
@@ -10,6 +11,7 @@ class App extends Component {
           <h2>Grudge Bin</h2>
         </div>
         <Form />
+        <List />
       </div>
     );
   }
