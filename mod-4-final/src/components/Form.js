@@ -18,10 +18,11 @@ class Form extends Component {
 
   postGrudge(e) {
     e.preventDefault();
-    let data = { name:this.state.name, offence:this.state.offence };
+    let data = { name: this.state.name, offence: this.state.offence };
     console.log(data);
     axios.post('/grudges', data)
-      .then(() => console.log('request complete'));
+      .then(() => console.log('request complete'))
+      .catch((err) => console.log(err));
   }
 
   render() {

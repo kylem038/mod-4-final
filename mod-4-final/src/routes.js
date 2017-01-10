@@ -7,7 +7,7 @@ import Grudge from './components/Grudge';
 const Routes = (props) => (
   <Router {...props}>
     <Route path="/" component={App} />
-    <Route path="/grudge" component={Grudge} />
+    <Route path="/grudge/:id" component={Grudge} />
   </Router>
 );
 

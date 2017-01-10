@@ -1,9 +1,13 @@
 const express = require('express');
 const path = require('path');
+const bodyParser = require('body-parser');
+const shortid = require('shortid');
 
 const app = express();
 
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Always return the main index.html, so react-router render the route in the client
 app.get('/', (req, res) => {
@@ -25,9 +29,11 @@ app.get('/grudges', (request, response) => {
 });
 
 app.post('/grudges', (request, response) => {
-  // console.log(response.body);
-  // let id += 0;
-  // let savedGrudge = { id:id, name:'Justin', offence:'Being a douche', forgiven: false }
+  const id = shortid.generate();
+  const savedGrudge = { id:id, name:request.body.name, offence:request.body.offence, forgiven: false };
+  app.locals.db.grudges.data.push(savedGrudge);
+
+  response.json(app.locals.db.grudges.data);
 });
 
 module.exports = app;
