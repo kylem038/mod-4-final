@@ -21,12 +21,21 @@ class List extends Component {
 
   render() {
     let arrayOfGrudges = this.state.grudges;
+    let numberUnforgiven = [];
+    let numberForgiven = [];
+    arrayOfGrudges.map((grudge) => {
+      if (grudge.forgiven === false) { numberUnforgiven.push(grudge); }
+      if (grudge.forgiven === true) { numberForgiven.push(grudge); }
+    });
     let returnedGrudges = arrayOfGrudges.map((grudge) => {
       return <Grudge grudge={grudge} />
     });
     const grudges = returnedGrudges;
     return (
       <div className="ListWrapper">
+        <p>Number of grudges: { arrayOfGrudges.length } </p>
+        <p>Number unforgiven: { numberUnforgiven.length } </p>
+        <p>Number forgiven: { numberForgiven.length } </p>
         {grudges}
       </div>
     );
