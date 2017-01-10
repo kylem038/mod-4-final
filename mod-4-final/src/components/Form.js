@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+const axios = require('axios');
 
 class Form extends Component {
   constructor() {
     super();
     this.state = {
       name: '',
-      motivation: '',
+      offence: '',
       forgiven: false
     };
   }
@@ -15,10 +16,18 @@ class Form extends Component {
     this.setState({ [name]: value });
   }
 
+  postGrudge(e) {
+    e.preventDefault();
+    let data = { name:this.state.name, offence:this.state.offence };
+    console.log(data);
+    axios.post('/grudges', data)
+      .then(() => console.log('request complete'));
+  }
+
   render() {
     return (
       <div className="FormWrapper">
-        <form className="Form">
+        <form className="Form" onSubmit={this.postGrudge.bind(this)}>
           <input
             className='grudge-name-input'
             name='name'
@@ -29,12 +38,12 @@ class Form extends Component {
             onChange={(e) => this.updateProperties(e)}
           />
           <textarea
-            className='motivation-input'
-            name='motivation'
+            className='offence-input'
+            name='offence'
             placeholder='Why do you despise this person?'
             type='text'
             aria-label='Why you despise said person'
-            value={this.state.motivation}
+            value={this.state.offence}
             onChange={(e) => this.updateProperties(e)}
           />
           <button type='submit'>Submit</button>
