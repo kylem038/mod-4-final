@@ -19,3 +19,15 @@
   display: flex;
   justify-content: center;
 }
+
+.ListWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Grudge {
+  border: 1px solid black;
+  width: 300px;
+  margin: 10px 0px 10px 0px;
+}
