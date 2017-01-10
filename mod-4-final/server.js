@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 
 app.set('port', process.env.PORT || 3001);
 app.locals.title = 'Grudge Bin';
@@ -14,9 +15,7 @@ app.locals.db = {
   }
 };
 
-app.get('/', (request, response) => {
-  response.send('You are the master of your own fate.');
-});
+app.use(express.static(path.resolve(__dirname, '..', 'build')));
 
 app.get('/grudges', (request, response) => {
   response.json(app.locals.db.grudges.data);

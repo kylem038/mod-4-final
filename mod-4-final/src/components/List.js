@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+const axios = require('axios');
 
 class List extends Component {
   constructor() {
@@ -7,6 +8,11 @@ class List extends Component {
       grudges: []
     };
   }
+
+  // componentDidMount() {
+  //   axios.get('/grudges')
+  //     .then((data) => console.log(data));
+  // }
 
   render() {
     return (
