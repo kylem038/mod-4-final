@@ -19,7 +19,6 @@ class Form extends Component {
   postGrudge(e) {
     e.preventDefault();
     let data = { name: this.state.name, offence: this.state.offence };
-    console.log(data);
     axios.post('/grudges', data)
       .then(() => console.log('request complete'))
       .catch((err) => console.log(err));
@@ -47,7 +46,7 @@ class Form extends Component {
             value={this.state.offence}
             onChange={(e) => this.updateProperties(e)}
           />
-          <button type='submit'>Submit</button>
+          <button className='SubmitButton' type='submit'>Submit</button>
         </form>
       </div>
     );

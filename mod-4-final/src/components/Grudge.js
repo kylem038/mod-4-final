@@ -22,6 +22,7 @@ class Grudge extends Component {
         <button
           type='submit'
           onClick={() => this.toggleForgiveness()}
+          className='ToggleForgiveness'
         >Toggle forgiveness</button>
       </div>
     );
